@@ -1,17 +1,12 @@
 from math import sqrt, ceil
-from re import A
 from typing import Iterable
 from pydataxm.pydataxm import ReadDB
-import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 from pyparsing import col, line
-import scipy as sp
 import seaborn as sns
 import numpy as np
-from scipy.stats import norm
-import math
-from datetime import date, timedelta
+from datetime import date
 from dateutil.relativedelta import relativedelta
 from traitlets import default
 from pathlib import Path
