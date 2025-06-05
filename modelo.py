@@ -406,7 +406,7 @@ def auxiliar(variable: str):
 
 
 def linebreak():
-    print(f"{110*"_"}\n")
+    print(f"{110*'_'}\n")
 
 
 def query(data):
