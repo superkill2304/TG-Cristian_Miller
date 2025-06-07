@@ -197,6 +197,17 @@ def earnings(
 
 def main():
 
+    print(
+    "============================================================\n"
+    " SIMULADOR DE VALOR EN RIESGO (VaR) PARA COMERCIALIZADORES\n"
+    "============================================================\n"
+    "Este programa ejecuta simulaciones para estimar el Valor en Riesgo (VaR)\n"
+    "de comercializadores puros de energía.\n\n"
+    "A continuación, siga las instrucciones paso a paso para completar\n"
+    "el formulario según lo solicitado por el programa.\n"
+    "------------------------------------------------------------\n\n"
+)
+
     sample_size = int(input("Seleccione el tamaño de muestra:\n" "--> "))
 
     agent = input("Seleccione el agente de interés:\n" "--> ")
