@@ -208,7 +208,7 @@ def main():
     "------------------------------------------------------------\n\n"
 )
 
-    sample_size = int(input("Seleccione el tamaño de muestra:\n" "--> "))
+    sample_size = int(input("Escoja el número de escenarios:\n" "--> "))
 
     agent = input("Seleccione el agente de interés:\n" "--> ")
 
