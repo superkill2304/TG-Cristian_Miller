@@ -564,4 +564,19 @@ def save(item):
 
 
 if __name__ == "__main__":
+
+    print(
+        "==============================================\n"
+        "  EVALUACIÓN DE RIESGOS FINANCIEROS - SCRIPT\n"
+        "==============================================\n"
+        "AUTOR: CRISTIAN DAVID MILLER GONZÁLEZ\n"
+        "TRABAJO DE GRADO - UNIVERSIDAD DEL VALLE\n"
+        "TÍTULO DEL TRABAJO: \"EVALUACIÓN DE RIESGOS FINANCIEROS PARA UN COMERCIALIZADOR PURO DE ENERGÍA\"\n"
+        "----------------------------------------------\n"
+        "Este script fue desarrollado específicamente como parte del trabajo de grado presentado en la Universidad del Valle.\n"
+        "Implementa el modelo descrito en el capítulo 3 del documento y guía al usuario paso a paso en su ejecución.\n"
+    )
+
+
+
     main()
