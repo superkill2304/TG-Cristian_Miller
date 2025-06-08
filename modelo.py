@@ -3,7 +3,6 @@ from typing import Iterable
 from pydataxm.pydataxm import ReadDB
 import matplotlib.pyplot as plt
 import pandas as pd
-from pyparsing import col, line
 import seaborn as sns
 import numpy as np
 from datetime import date
