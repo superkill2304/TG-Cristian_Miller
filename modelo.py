@@ -197,15 +197,15 @@ def earnings(
 def main():
 
     print(
-    "============================================================\n"
-    " SIMULADOR DE VALOR EN RIESGO (VaR) PARA COMERCIALIZADORES\n"
-    "============================================================\n"
-    "Este programa ejecuta simulaciones para estimar el Valor en Riesgo (VaR)\n"
-    "de comercializadores puros de energía.\n\n"
-    "A continuación, siga las instrucciones paso a paso para completar\n"
-    "el formulario según lo solicitado por el programa.\n"
-    "------------------------------------------------------------\n\n"
-)
+        "============================================================\n"
+        " SIMULADOR DE VALOR EN RIESGO (VaR) PARA COMERCIALIZADORES\n"
+        "============================================================\n"
+        "Este programa ejecuta simulaciones para estimar el Valor en Riesgo (VaR)\n"
+        "de comercializadores puros de energía.\n\n"
+        "A continuación, siga las instrucciones paso a paso para completar\n"
+        "el formulario según lo solicitado por el programa.\n"
+        "------------------------------------------------------------\n\n"
+    )
 
     sample_size = int(input("Escoja el número de escenarios:\n" "--> "))
 
@@ -576,11 +576,11 @@ def save(item):
 if __name__ == "__main__":
 
     print(
-    "=========================================================================\n"
-    "SCRIPT DESARROLLADO POR CRISTIAN DAVID MILLER GONZÁLEZ\n"
-    "PARA EL TRABAJO DE GRADO SOBRE RIESGOS FINANCIEROS EN MERCADOS ELÉCTRICOS\n"
-    "email: cristian.miller@correounivalle.edu.co\n"
-    "=========================================================================\n"
-)
+        "=========================================================================\n"
+        "SCRIPT DESARROLLADO POR CRISTIAN DAVID MILLER GONZÁLEZ\n"
+        "PARA EL TRABAJO DE GRADO SOBRE RIESGOS FINANCIEROS EN MERCADOS ELÉCTRICOS\n"
+        "email: cristian.miller@correounivalle.edu.co\n"
+        "=========================================================================\n"
+    )
 
     main()
