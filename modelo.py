@@ -545,7 +545,7 @@ def save(item):
         # Determina el directorio base del archivo actual (es decir, la carpeta donde se encuentra modelo.py)
         base_dir = Path(__file__).resolve().parent
 
-        escenarios_folder = base_dir / "escenarios"
+        escenarios_folder = base_dir / "Escenarios"
 
         if not os.path.exists(escenarios_folder):
 
