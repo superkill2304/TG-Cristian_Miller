@@ -79,7 +79,8 @@ def spot_price(start, end, iterations=1_000):
     Utiliza una distribución normal basada en las variaciones marginales históricas de precios.
 
     Parámetros:
-    - timeoffset: Periodo de análisis ("anual", "mensual", "manual")
+    - start: inicio de período
+    - end: final de períod
     - iterations: Número de simulaciones que se desea generar
 
     Retorna:
