@@ -189,7 +189,7 @@ def earnings(
         earning_dataframe[hour] = income - cost
 
     # Se agrega una columna con la ganancia total sumando todas las horas
-    #
+    
     earning_dataframe["Total"] = earning_dataframe.sum(axis=1)
 
     return earning_dataframe
