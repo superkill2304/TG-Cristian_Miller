@@ -7,7 +7,6 @@ import seaborn as sns
 import numpy as np
 from datetime import date
 from dateutil.relativedelta import relativedelta
-from traitlets import default
 from pathlib import Path
 import os
 
@@ -542,8 +541,8 @@ def save(item):
     )
 
     if option == "y":
-        # Determina el directorio base del archivo actual (es decir, la carpeta donde se encuentra modelo.py)
-        base_dir = Path(__file__).resolve().parent
+        # Determina el directorio padre del archivo actual (es decir, la carpeta donde se encuentra modelo.py)
+        base_dir = Path(__file__).resolve().parent.parent
 
         escenarios_folder = base_dir / "Escenarios"
 
