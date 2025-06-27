@@ -13,6 +13,102 @@ import os
 objectoAPI = ReadDB()
 
 
+def main():
+
+    print(
+        "============================================================\n"
+        " SIMULADOR DE VALOR EN RIESGO (VaR) PARA COMERCIALIZADORES\n"
+        "============================================================\n"
+        "Este programa ejecuta simulaciones para estimar el Valor en Riesgo (VaR)\n"
+        "de comercializadores puros de energía.\n\n"
+        "A continuación, siga las instrucciones paso a paso para completar\n"
+        "el formulario según lo solicitado por el programa.\n"
+        "------------------------------------------------------------\n\n"
+    )
+
+    sample_size = int(input("Escoja el número de escenarios:\n" "--> "))
+
+    agent = input("Seleccione el agente de interés:\n" "--> ")
+
+    timeoffset = input(
+        "Seleccione el intervalo de tiempo de su interés:\n"
+        "  - Digite 'anual'   para un año completo\n"
+        "  - Digite 'mensual' para un mes\n"
+        "  - Digite 'manual'  para otro periodo personalizado\n"
+        "--> "
+    )
+    end = date.today()
+
+    if timeoffset == "anual":
+
+        start = end - relativedelta(years=1)
+
+    elif timeoffset == "mensual":
+        start = end - relativedelta(months=1)
+
+    elif timeoffset == "manual":
+        start = str(input("Introduzca la fecha de inicio del período (AAAA-MM-DD): "))
+        end = str(input("Introduzca la fecha de fin del período (AAAA-MM-DD): "))
+
+    linebreak()
+    sell_price = auxiliar("sell_price")
+    linebreak()
+    contracted_power = auxiliar("contracted_power")
+    linebreak()
+    buy_price = auxiliar("buy_price")
+    linebreak()
+    operational_cost = float(input("Ingrese el costo operativo:\n" "--> $"))
+
+    simulated_demand, today_demand = power_demand(start, end, agent, sample_size)
+    simulated_price, today_spot = spot_price(start, end, sample_size)
+
+    today_earning = earnings(
+        today_demand,
+        contracted_power,
+        sell_price,
+        today_spot,
+        buy_price,
+        operational_cost,
+    )
+    simulated_earning = earnings(
+        simulated_demand,
+        contracted_power,
+        sell_price,
+        simulated_price,
+        buy_price,
+        operational_cost,
+        sample_size,
+    )
+
+    marginal_earning = simulated_earning - today_earning.squeeze()
+
+    linebreak()
+
+    save(marginal_earning)
+
+    linebreak()
+    (
+        queried_data,
+        mean,
+        std,
+        min,
+        max,
+        quantile25,
+        quantile50,
+        quantile75,
+        quantileVaR,
+        label,
+    ) = query(marginal_earning)
+
+    linebreak()
+    info(mean, std, min, max, quantile25, quantile50, quantile75, quantileVaR)
+    linebreak()
+
+    linebreak()
+    plot(queried_data, quantileVaR, label)
+    return marginal_earning
+
+
 def power_demand(start, end, agent=None, iterations=1_000):
     """
     Esta función se encarga de simular la demanda de energía en kWh de los clientes
@@ -188,106 +284,10 @@ def earnings(
         earning_dataframe[hour] = income - cost
 
     # Se agrega una columna con la ganancia total sumando todas las horas
-    
+
     earning_dataframe["Total"] = earning_dataframe.sum(axis=1)
 
     return earning_dataframe
-
-
-def main():
-
-    print(
-        "============================================================\n"
-        " SIMULADOR DE VALOR EN RIESGO (VaR) PARA COMERCIALIZADORES\n"
-        "============================================================\n"
-        "Este programa ejecuta simulaciones para estimar el Valor en Riesgo (VaR)\n"
-        "de comercializadores puros de energía.\n\n"
-        "A continuación, siga las instrucciones paso a paso para completar\n"
-        "el formulario según lo solicitado por el programa.\n"
-        "------------------------------------------------------------\n\n"
-    )
-
-    sample_size = int(input("Escoja el número de escenarios:\n" "--> "))
-
-    agent = input("Seleccione el agente de interés:\n" "--> ")
-
-    timeoffset = input(
-        "Seleccione el intervalo de tiempo de su interés:\n"
-        "  - Digite 'anual'   para un año completo\n"
-        "  - Digite 'mensual' para un mes\n"
-        "  - Digite 'manual'  para otro periodo personalizado\n"
-        "--> "
-    )
-    end = date.today()
-
-    if timeoffset == "anual":
-
-        start = end - relativedelta(years=1)
-
-    elif timeoffset == "mensual":
-        start = end - relativedelta(months=1)
-
-    elif timeoffset == "manual":
-        start = str(input("Introduzca la fecha de inicio del período (AAAA-MM-DD): "))
-        end = str(input("Introduzca la fecha de fin del período (AAAA-MM-DD): "))
-
-    linebreak()
-    sell_price = auxiliar("sell_price")
-    linebreak()
-    contracted_power = auxiliar("contracted_power")
-    linebreak()
-    buy_price = auxiliar("buy_price")
-    linebreak()
-    operational_cost = float(input("Ingrese el costo operativo:\n" "--> $"))
-
-    simulated_demand, today_demand = power_demand(start, end, agent, sample_size)
-    simulated_price, today_spot = spot_price(start, end, sample_size)
-
-    today_earning = earnings(
-        today_demand,
-        contracted_power,
-        sell_price,
-        today_spot,
-        buy_price,
-        operational_cost,
-    )
-    simulated_earning = earnings(
-        simulated_demand,
-        contracted_power,
-        sell_price,
-        simulated_price,
-        buy_price,
-        operational_cost,
-        sample_size,
-    )
-
-    marginal_earning = simulated_earning - today_earning.squeeze()
-
-    linebreak()
-
-    save(marginal_earning)
-
-    linebreak()
-    (
-        queried_data,
-        mean,
-        std,
-        min,
-        max,
-        quantile25,
-        quantile50,
-        quantile75,
-        quantileVaR,
-        label,
-    ) = query(marginal_earning)
-
-    linebreak()
-    info(mean, std, min, max, quantile25, quantile50, quantile75, quantileVaR)
-    linebreak()
-
-    linebreak()
-    plot(queried_data, quantileVaR, label)
-    return marginal_earning
 
 
 def plot(item, quantile, label):
