@@ -577,7 +577,7 @@ if __name__ == "__main__":
 
     print(
         "=========================================================================\n"
-        "SCRIPT DESARROLLADO POR CRISTIAN DAVID MILLER GONZÁLEZ\n"
+        "SCRIPT DESARROLLADO POR CRISTIAN DAVID MILLER GONZALEZ\n"
         "PARA EL TRABAJO DE GRADO SOBRE RIESGOS FINANCIEROS EN MERCADOS ELÉCTRICOS\n"
         "email: cristian.miller@correounivalle.edu.co\n"
         "=========================================================================\n"
