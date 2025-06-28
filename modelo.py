@@ -16,14 +16,14 @@ objectoAPI = ReadDB()
 def main():
 
     print(
-        "============================================================\n"
+        "=========================================================================\n"
         " SIMULADOR DE VALOR EN RIESGO (VaR) PARA COMERCIALIZADORES\n"
-        "============================================================\n"
+        "=========================================================================\n"
         "Este programa ejecuta simulaciones para estimar el Valor en Riesgo (VaR)\n"
         "de comercializadores puros de energía.\n\n"
         "A continuación, siga las instrucciones paso a paso para completar\n"
         "el formulario según lo solicitado por el programa.\n"
-        "------------------------------------------------------------\n\n"
+        "-------------------------------------------------------------------------\n\n"
     )
 
     sample_size = int(input("Escoja el número de escenarios:\n" "--> "))
