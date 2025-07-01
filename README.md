@@ -13,7 +13,7 @@ El repositorio incluye los ejemplos explicativos presentados en el capítulo 2 d
 - `VaR_MonteCarlo.py`: Estimación del VaR aplicando el método de simulación Monte Carlo.
 - `Area_circulo.py`: Cálculo auxiliar del área de una circunferencia (usado como ejemplo introductorio).
 
-Además, se encuentra el módulo principal de implementación del modelo matemático propuesto:
+Además, se encuentra el módulo principal de implementación del modelo matemático propuesto en el capítulo 3:
 
 - `modelo.py`: Programa completo para la estimación del riesgo financiero, basado en datos reales y métodos cuantitativos explicados en el trabajo de grado.
 
